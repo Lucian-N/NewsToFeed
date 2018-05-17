@@ -9,7 +9,7 @@
     android:paddingRight="16dp"
     android:paddingStart="16dp">
 
-    <TextView
+    <ImageView
         android:id="@+id/newsImage"
         android:layout_width="64dp"
         android:layout_height="64dp"
