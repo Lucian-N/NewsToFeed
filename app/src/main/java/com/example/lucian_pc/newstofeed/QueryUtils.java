@@ -83,7 +83,7 @@ public final class QueryUtils {
                 }
 
                 // Create News object with retrieved JSON keys
-                News newsObject = new News(newsTitle);
+                News newsObject = new News(newsDate, newsTitle, newsUrl, newsAuthor, newsSectionName);
                 // Add previously created News object to newsList
                 newsList.add(newsObject);
             }
