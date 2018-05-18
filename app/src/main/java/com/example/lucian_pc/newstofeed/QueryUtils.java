@@ -48,8 +48,11 @@ public final class QueryUtils {
             // Create JSON object from JSON response string
             JSONObject baseJsonResponse = new JSONObject(newsJSON);
 
+            // JSON object associated with response
+            JSONObject responseJson = baseJsonResponse.getJSONObject("response");
+
             // Extract JSON array associated with 'features'
-            JSONArray newsArray = baseJsonResponse.getJSONArray("results");
+            JSONArray newsArray = responseJson.getJSONArray("results");
 
             // For each News item in NewsArray create an object
             for (int i = 0; i < newsArray.length(); i++) {
@@ -58,11 +61,26 @@ public final class QueryUtils {
                 JSONObject currentNews = newsArray.getJSONObject(i);
 
                 // For any given News found, extract associated JSON key
-                JSONObject newsSectionName = currentNews.getJSONObject("sectionName");
+                String newsSectionName = currentNews.getString("sectionName");
 
                 // Extract values for keys
-                String newsDate = currentNews.getString("webPublicationDate");
+                // Check if date is available
+                String newsDate = "Date Unavailable";
+                if (currentNews.has("webPublicationDate")) {
+                    newsDate = currentNews.getString("webPublicationDate");
+                }
+
                 String newsTitle = currentNews.getString("webTitle");
+                String newsUrl = currentNews.getString("webUrl");
+
+                // Extract Author Array - tags
+                JSONArray newsAuthorArray = currentNews.getJSONArray("tags");
+
+                String newsAuthor = "Author Unavailable";
+                if (newsAuthorArray.length() == 1) {
+                    JSONObject newsAuthorObject = newsAuthorArray.getJSONObject(0);
+                    newsAuthor = newsAuthorObject.getString("webTitle");
+                }
 
                 // Create News object with retrieved JSON keys
                 News newsObject = new News(newsTitle);
@@ -159,10 +177,10 @@ public final class QueryUtils {
             Log.e(LOG_QUERY, "Problem with HTTP request", e);
         }
         // Extract fields from JSOn response to create a new list of News objects
-        List<News> newsList = extractFeatureFromJson(jsonResponse);
+        List<News> news = extractFeatureFromJson(jsonResponse);
 
         // Return list of news
-        return newsList;
+        return news;
     }
 
 

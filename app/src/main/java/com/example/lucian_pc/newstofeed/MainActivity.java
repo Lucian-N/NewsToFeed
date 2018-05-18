@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     // Adapter for newsList
     private NewsAdapter newsAdapter;
-    private ListView newsView;
 
 
     @Override
@@ -39,16 +38,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         // Find ListView reference in layout
-        ListView newsListView = (ListView) findViewById(R.id.newsList);
+        ListView newsListView = findViewById(R.id.newsList);
+
+        mEmptyStateTextView = findViewById(R.id.empty_view);
+        newsListView.setEmptyView(mEmptyStateTextView);
 
         // Create new Adapter with empty list of news as input
         newsAdapter = new NewsAdapter(this, new ArrayList<News>());
 
         // Set adapter on ListView in order to populate list
         newsListView.setAdapter(newsAdapter);
-
-        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
-        newsListView.setEmptyView(mEmptyStateTextView);
 
         // Set ItemClickListener on ListView to send access web browser
         newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -100,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         View loadingIndicator = findViewById(R.id.loading_indicator);
         loadingIndicator.setVisibility(View.GONE);
 
-        // Empty state to display if no News foound
+        // Empty state to display if no News found
         mEmptyStateTextView.setText(R.string.no_news);
 
         // Clear adapter of previous news data
