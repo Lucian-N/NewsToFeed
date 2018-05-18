@@ -48,13 +48,12 @@ public class NewsAdapter extends ArrayAdapter<News> {
         newsAuthor.setText(newsAuthorString);
 
         TextView newsDate = convertView.findViewById(R.id.newsDate);
-        String newsDateString = currentNews.getNewsDate();
-        newsDate.setText(newsDateString);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date newsDateFormat = dateFormat.parse(currentNews.getNewsDate());
             String date = dateFormat.format(newsDateFormat);
+            newsDate.setText(date);
         } catch (ParseException e) {
             Log.e("Date formatting error", "Error Message: " + e.getMessage());
             e.printStackTrace();
