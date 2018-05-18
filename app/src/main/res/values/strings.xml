@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NewsToFeed</string>
+    <string name="no_internet_connection">No internet connection detected.</string>
+    <string name="no_news">No news found!</string>
 </resources>

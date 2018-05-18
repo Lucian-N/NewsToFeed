@@ -14,7 +14,6 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="center_vertical"
-        android:background=""
         android:fontFamily="sans-serif-medium"
         android:gravity="center"
         android:textColor="@android:color/white"
