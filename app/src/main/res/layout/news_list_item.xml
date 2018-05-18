@@ -30,7 +30,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/headline_title"
+            android:id="@+id/newsAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -68,7 +68,7 @@
             tools:text="Mar 6, 2010" />
 
         <TextView
-            android:id="@+id/newsHour"
+            android:id="@+id/newsCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
