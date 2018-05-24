@@ -2,4 +2,9 @@
     <string name="app_name">NewsToFeed</string>
     <string name="no_internet_connection">No internet connection detected.</string>
     <string name="no_news">No news found!</string>
+    <string name="settings_menu_item">Settings</string>
+    <string name="settings_title">News Settings</string>
+    <string name="settings_politics_label">Political News</string>
+    <string name="settings_politics_key" translatable="false">politics_key</string>
+    <string name="settings_politics_default" translatable="false">0</string>
 </resources>

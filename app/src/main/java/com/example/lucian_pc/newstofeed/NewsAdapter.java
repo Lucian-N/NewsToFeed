@@ -29,8 +29,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         // get News at current position
         News currentNews = getItem(position);
 
-
-        /**
+        /*
          *Find respective resource files to update from xml
          *Update news information with image, title, date and URL
          */
