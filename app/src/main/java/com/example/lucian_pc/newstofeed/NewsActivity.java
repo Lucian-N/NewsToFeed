@@ -4,11 +4,13 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +27,8 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
 
     // Constant value for news loader ID
     private static final int NEWS_LOADER_ID = 1;
-    private static final String GUARDIAN_API = "https://content.guardianapis.com/search?show-tags=contributor&api-key=57e90dbb-ecba-4eae-8ee7-780afa76112c";
+    //private static final String GUARDIAN_API = "https://content.guardianapis.com/search?show-tags=contributor&api-key=57e90dbb-ecba-4eae-8ee7-780afa76112c";
+    private static final String GUARDIAN_API = "https://content.guardianapis.com/search?";
 
     // TextView to display when list is empty
     private TextView mEmptyStateTextView;
@@ -90,10 +93,34 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     @Override
-    public Loader<List<News>> onCreateLoader(int i, Bundle bundle) {
-        // Create a new Loader for given URL
-        return new NewsLoader(this, GUARDIAN_API);
+    // Create a new Loader for given URL
+    public Loader<List<News>> onCreateLoader(int id, Bundle args) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        //Retrieve value from preferences or use default
+        String nr_of_news = sharedPreferences.getString(getString(R.string.news_number),
+                getString(R.string.news_number_default));
+        String orderByDate = sharedPreferences.getString(getString(R.string.order_by_key),
+                getString(R.string.order_by_default));
+        String sortBySection = sharedPreferences.getString(getString(R.string.sort_by_key),
+                getString(R.string.sort_by_default));
+
+        // Splits passed URI string in order to add search parameters
+        Uri baseUri = Uri.parse(GUARDIAN_API);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
+        // Append query parameter and its value.
+        if (!sortBySection.equals(getString(R.string.all))) {
+            uriBuilder.appendQueryParameter(getString(R.string.section), sortBySection);
+        }
+        uriBuilder.appendQueryParameter(getString(R.string.show_tags), getString(R.string.author));
+        uriBuilder.appendQueryParameter(getString(R.string.order_by), orderByDate);
+        uriBuilder.appendQueryParameter(getString(R.string.sort_by), nr_of_news);
+        uriBuilder.appendQueryParameter(getString(R.string.api_key), getString(R.string.api_key_id));
+
+        // Return the completed uri
+        return new NewsLoader(this, uriBuilder.toString());
     }
+
 
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> newsList) {

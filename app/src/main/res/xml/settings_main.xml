@@ -1,11 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_title">
 
     <EditTextPreference
-        android:defaultValue="@string/settings_politics_default"
+        android:defaultValue="@string/news_number_default"
         android:inputType="numberDecimal"
-        android:key="@string/settings_politics_key"
+        android:key="@string/news_number_key"
         android:selectAllOnFocus="true"
-        android:title="@string/settings_politics_label" />
+        android:title="@string/news_number" />
 
+    <ListPreference
+        android:defaultValue="@string/sort_by_default"
+        android:entries="@array/sort_labels"
+        android:entryValues="@array/sort_values"
+        android:key="@string/sort_by_key"
+        android:title="@string/sort_by_label" />
+
+    <ListPreference
+        android:defaultValue="@string/order_by_default"
+        android:entries="@array/order_labels"
+        android:entryValues="@array/order_values"
+        android:key="@string/order_by_key"
+        android:title="@string/order_by_label" />
 </PreferenceScreen>

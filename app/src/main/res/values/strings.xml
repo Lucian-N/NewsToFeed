@@ -1,10 +1,66 @@
 <resources>
     <string name="app_name">NewsToFeed</string>
+
+    <!--Strings to display when app cannot -->
     <string name="no_internet_connection">No internet connection detected.</string>
     <string name="no_news">No news found!</string>
     <string name="settings_menu_item">Settings</string>
     <string name="settings_title">News Settings</string>
-    <string name="settings_politics_label">Political News</string>
-    <string name="settings_politics_key" translatable="false">politics_key</string>
-    <string name="settings_politics_default" translatable="false">0</string>
+
+    <!--Strings used in settings tab-->
+    <string name="news_number">News number to display</string>
+    <string name="news_number_key" translatable="false">news_nr</string>
+    <string name="news_number_default" translatable="false">15</string>
+
+    <!-- Strings used for preferences -->
+    <string name="order_by_label">Order By</string>
+    <string name="order_by_key" translatable="false">order_by</string>
+    <string name="order_by_default" translatable="false">@string/order_by_newest_value</string>
+
+    <!-- Strings used for date ordering -->
+    <string name="order_by_newest_label">Newest</string>
+    <string name="order_by_newest_value" translatable="false">newest</string>
+    <string name="order_by_oldest_label">Oldest</string>
+    <string name="order_by_oldest_value" translatable="false">oldest</string>
+
+    <!-- Strings used for relevance ordering-->
+    <string name="order_by_relevance_label">Relevance</string>
+    <string name="order_by_relevance_value" translatable="false">relevance</string>
+
+    <!-- Strings used for section ordering -->
+    <string name="sort_by_label">Sort By</string>
+    <string name="sort_by_key" translatable="false">sort_by</string>
+    <string name="sort_by_default" translatable="false">@string/sort_by_all_value</string>
+    <string name="sort_by_all_label">All news</string>
+    <string name="sort_by_all_value" translatable="false">all</string>
+    <string name="sort_by_technology_label">Technology</string>
+    <string name="sort_by_technology_value" translatable="false">technology</string>
+    <string name="sort_by_sport_label">Sport</string>
+    <string name="sort_by_sport_value" translatable="false">sport</string>
+    <string name="sort_by_music_label">Music</string>
+    <string name="sort_by_music_value" translatable="false">music</string>
+    <string name="sort_by_books_label">Books</string>
+    <string name="sort_by_books_value" translatable="false">books</string>
+    <string name="sort_by_film_label">Film</string>
+    <string name="sort_by_film_value" translatable="false">film</string>
+    <string name="sort_by_education_label">Education</string>
+    <string name="sort_by_education_value" translatable="false">education</string>
+    <string name="sort_by_world_news_label">World News</string>
+    <string name="sort_by_world_news_value" translatable="false">world</string>
+    <string name="sort_by_business_label">Business</string>
+    <string name="sort_by_business_value" translatable="false">business</string>
+    <string name="sort_by_fashion_label">Fashion</string>
+    <string name="sort_by_fashion_value" translatable="false">fashion</string>
+    <string name="sort_by_politics_label">Politics</string>
+    <string name="sort_by_politics_value" translatable="false">politics</string>
+
+    <!-- General strings for settings support -->
+    <string name="api_key_id"> "57e90dbb-ecba-4eae-8ee7-780afa76112c"</string>
+    <string name="all">all</string>
+    <string name="section">section</string>
+    <string name="show_tags">show-tags</string>
+    <string name="author">contributor</string>
+    <string name="order_by">order-by</string>
+    <string name="sort_by">sort-by</string>
+    <string name="api_key">api-key</string>
 </resources>
