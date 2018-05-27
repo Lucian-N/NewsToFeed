@@ -161,7 +161,7 @@ public class NewsActivity extends AppCompatActivity implements LoaderManager.Loa
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             // Open activity via intent for matching menu
-            Intent settingsIntent = new Intent(this, NewsActivity.class);
+            Intent settingsIntent = new Intent(this, NewsSettings.class);
             startActivity(settingsIntent);
             return true;
         }

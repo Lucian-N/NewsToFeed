@@ -2,6 +2,7 @@ package com.example.lucian_pc.newstofeed;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
@@ -22,7 +23,7 @@ public class NewsSettings extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference newsNumberPreference = findPreference(getString(R.string.news_number));
+            Preference newsNumberPreference = findPreference(getString(R.string.news_number_key));
             bindPreferenceSummaryToValue(newsNumberPreference);
 
             Preference sortByPreference = findPreference(getString(R.string.sort_by_key));
@@ -33,9 +34,19 @@ public class NewsSettings extends AppCompatActivity {
         }
 
         @Override
+        // Update NewsActivity after preference change occurs
         public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringPreference = value.toString();
-            preference.setSummary(stringPreference);
+            String stringValue = value.toString();
+            if (preference instanceof ListPreference) {
+                ListPreference listPreference = (ListPreference) preference;
+                int prefIndex = listPreference.findIndexOfValue(stringValue);
+                if (prefIndex >= 0) {
+                    CharSequence[] labels = listPreference.getEntries();
+                    preference.setSummary(labels[prefIndex]);
+                }
+            } else {
+                preference.setSummary(stringValue);
+            }
             return true;
         }
 
